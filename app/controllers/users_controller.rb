@@ -20,6 +20,12 @@ class UsersController < ApplicationController
     render :sign_in
   end
 
+  def new_session
+    @user = User.find_by username: params[:username]
+    session[:current_user_id] = @user.id
+    redirect_to @user
+  end
+
   private
 
   def whitelisted_user_params
