@@ -1,0 +1,7 @@
+<h3>Sign in:</h3>
+
+<%= form_with model: @user do |form| %>
+  <%= form.label :username, "Enter your username:" %><br>
+  <%= form.text_field :username %><br>
+  <%= form.submit "Login" %>
+<% end %>
