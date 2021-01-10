@@ -16,6 +16,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def sign_in
+    render :sign_in
+  end
+
   private
 
   def whitelisted_user_params
