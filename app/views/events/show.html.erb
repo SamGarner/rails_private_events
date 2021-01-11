@@ -1,0 +1,9 @@
+<h4>Event info:</h4>
+
+<p>
+  <%= "When: #{ @event.date.strftime("%B %e, %Y") }" %><br>
+  <%= "Where: #{ @event.location }" %><br>
+  <%= "Why: #{ @event.description }" %><br><br>
+  Event creator:
+  <i><%= "#{ @event.creator.name }" %></i>
+</p>
