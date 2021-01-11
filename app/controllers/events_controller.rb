@@ -12,11 +12,19 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(whitelisted_event_params)
-    if @event.save?
+    @user = User.find(session[:current_user_id])
+    @event = @user.events.build(whitelisted_event_params)
+    # @event = Event.new(whitelisted_event_params)
+    if @event.save
       redirect_to events_path
     else
       render :new
     end
+  end
+
+  private
+
+  def whitelisted_event_params
+    params.require(:event).permit(:date, :location, :description)
   end
 end
