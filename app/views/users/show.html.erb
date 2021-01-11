@@ -3,3 +3,14 @@
 <h3>User Profile:</h3>
 <%= "Name: #{ @user.name }" %><br>
 <%= "Username: #{ @user.username }" %>
+
+<h4>Events created:</h4>
+<% if @user.events.count.zero? %>
+  <%= "This user has not created any events." %>
+<% else %> 
+  <% @user.events.each do |event| %>
+    <%= event.date %>
+    <%= event.location %>
+    <%= event.description %>
+  <% end %>
+<% end %>
