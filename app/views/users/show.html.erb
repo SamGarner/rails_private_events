@@ -5,12 +5,23 @@
 <%= "Username: #{ @user.username }" %>
 
 <h4>Events created:</h4>
-<% if @user.events.count.zero? %>
+<% if @user.hosted_events.count.zero? %>
   <%= "This user has not created any events." %>
 <% else %> 
-  <% @user.events.each do |event| %>
-    <%= event.date %>
-    <%= event.location %>
-    <%= event.description %>
+  <% @user.hosted_events.each do |event| %>
+    <%= event.date %> - 
+    <%= event.location %><br>
+    <small><%= event.description %></small>
+  <% end %>
+<% end %>
+
+<h4>Events attending:</h4>
+<% if @user.attended_events.count.zero? %>
+  <%= "This user has not accepted any invitations." %>
+<% else %> 
+  <% @user.attended_events.each do |event| %>
+    <%= event.date %> - 
+    <%= event.location %><br>
+    <small><%= event.description %></small>
   <% end %>
 <% end %>
