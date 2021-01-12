@@ -13,8 +13,7 @@ class EventsController < ApplicationController
 
   def create
     @user = User.find(session[:current_user_id])
-    @event = @user.events.build(whitelisted_event_params)
-    # @event = Event.new(whitelisted_event_params)
+    @event = @user.hosted_events.build(whitelisted_event_params)
     if @event.save
       redirect_to events_path
     else
