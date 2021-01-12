@@ -4,6 +4,10 @@
   <%= "When: #{ @event.date.strftime("%B %e, %Y") }" %><br>
   <%= "Where: #{ @event.location }" %><br>
   <%= "Why: #{ @event.description }" %><br><br>
-  Event creator:
-  <i><%= "#{ @event.creator.name }" %></i>
+  Creator:
+  <i><%= "#{ @event.creator.name }" %></i><br>
+  Who's coming:
+  <% @event.guests.each do |guest| %>
+    <%= guest.name %>, <br>
+  <% end %>
 </p>
