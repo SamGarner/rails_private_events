@@ -15,11 +15,25 @@
   <% end %>
 <% end %>
 
-<h4>Events attending:</h4>
-<% if @user.attended_events.count.zero? %>
-  <%= "This user has not accepted any invitations." %>
+<% upcoming_events = @user.attended_events.select { |event| DateTime.now - event.date < 0} %>
+<% past_events = @user.attended_events.select { |event| DateTime.now - event.date > 0} %>
+
+<h4>Upcoming Events:</h4>
+<% if upcoming_events.empty? %>
+  <%= "This user is not yet attending any upcoming events." %>
 <% else %> 
-  <% @user.attended_events.each do |event| %>
+  <% upcoming_events.each do |event| %>
+    <%= event.date %> - 
+    <%= event.location %><br>
+    <small><%= event.description %></small>
+  <% end %>
+<% end %>
+
+<h4>Past Events:</h4>
+<% if past_events.empty? %>
+  <%= "This user has not yet attended any events." %>
+<% else %> 
+  <% past_events.each do |event| %>
     <%= event.date %> - 
     <%= event.location %><br>
     <small><%= event.description %></small>
