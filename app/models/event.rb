@@ -6,4 +6,12 @@ class Event < ApplicationRecord
   belongs_to :creator, class_name: 'User'
   has_many :invitations
   has_many :guests, through: :invitations
+
+  def self.past
+    select { |event| event.date < DateTime.now }
+  end
+
+  def self.upcoming
+    select { |event| event.date >= DateTime.now }
+  end
 end
