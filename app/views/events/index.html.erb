@@ -1,6 +1,6 @@
 <h4>Upcoming Events:</h4>
 
-<% @events.upcoming.each do |event| %>
+<% @events.unscoped.upcoming(DateTime.now).each do |event| %>
   <%= event.date %><br>
   <%= event.location %><br>
   <%= event.description %><br><br><br>
@@ -8,7 +8,7 @@
 
 <h4>Past Events:</h4>
 
-<% @events.past.each do |event| %>
+<% @events.past(DateTime.now).each do |event| %>
   <%= event.date %><br>
   <%= event.location %><br>
   <%= event.description %><br><br><br>
