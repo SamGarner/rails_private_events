@@ -1,8 +1,9 @@
 <small>
   <% if session[:current_user_id].nil? %>
+    You're not currently logged in.
   <% else %>
     <% user = User.find(session[:current_user_id]) %>
-    <%= "currently signed in as: #{ user.username }" %>
+    <%= "signed in as: #{ user.username }" %>
   <% end %>
-</small>
+</small><br><br>
 
