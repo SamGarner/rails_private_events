@@ -1,3 +1,6 @@
+<%= render "shared/navbar" %>
+<%= render "shared/signed_in_as" %>
+
 <h4>Upcoming Events:</h4>
 
 <% @events.unscoped.upcoming(DateTime.now).each do |event| %>

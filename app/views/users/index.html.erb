@@ -1,5 +1,5 @@
 <%= render "shared/navbar" %>
-<%= render "signed_in_as" %>
+<%= render "shared/signed_in_as" %>
 
 <% @users.each do |user| %>
 <%= "#{user.name}: #{user.username}" %><br>
